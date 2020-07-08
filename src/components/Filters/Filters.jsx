@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "./Button";
 import Search from "./Search";
-import Container from "./Container";
+import Container from "../Container";
 
 class Filters extends React.Component {
   constructor(props) {

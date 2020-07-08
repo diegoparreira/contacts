@@ -1,10 +1,10 @@
 import React from "react";
 
-import Topbar from "./components/Topbar";
-import Filters from "./components/Filters";
-import Contacts from "./components/Contacts";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Home from "./containers/Home";
+import NewContact from "./containers/NewContact";
 import orderItens from "./utils/index";
-import contacts from "./data/data.json"
+import contacts from "./data/data.json";
 
 import "./App.scss";
 
@@ -27,6 +27,10 @@ class App extends React.Component {
     };
   }
 
+  handleSubmit = () => {
+    alert("Adicionado com sucesso");
+  }
+
   handleClick = (key) => {
     this.setState({
       selected: key,
@@ -35,7 +39,6 @@ class App extends React.Component {
       ),
       orderType: !this.state.orderType,
     });
-    
   };
 
   handleChange = (e) => {
@@ -48,23 +51,24 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-      this.setState({
-        contactsToRender: contacts,
-      });
+    this.setState({
+      contactsToRender: contacts,
+    });
   }
 
   render() {
     return (
       <React.Fragment>
-        <Topbar />
-          <Filters
-            handleClick={this.handleClick}
-            handleChange={this.handleChange}
-            selected={this.state.selected}
-            orderType={this.state.orderType}
-          />
-
-        <Contacts data={this.state.contactsToRender} />
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/newcontact">
+              <NewContact handleSubmit={this.handleSubmit}/>
+            </Route>
+          </Switch>
+        </Router>
       </React.Fragment>
     );
   }

@@ -1,5 +1,5 @@
 import React from "react";
-import {formatDate} from "../utils/formatDate";
+import {formatDate} from "../../utils/formatDate";
 
 class Contact extends React.Component {
 

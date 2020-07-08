@@ -1,6 +1,6 @@
 import React from "react";
 import Contact from "./Contact";
-import Container from "./Container";
+import Container from "../Container";
 
 class Contacts extends React.Component {
   constructor(props) {
